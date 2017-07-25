@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
-  NavLink
+  Route
 } from 'react-router-dom'
-import logo from './logo.svg';
 import './App.css';
 import Nav from './Nav.js'
 
