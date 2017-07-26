@@ -9,7 +9,7 @@ function Nav () {
       <NavButton display="Discover" to="/discover"/>
       <NavButton display="Sign In" to="/login"/>
     </nav>
-  )
+  );
 }
 
-export default Nav;
+export default Nav

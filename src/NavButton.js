@@ -8,7 +8,7 @@ function NavButton (props) {
         {props.display}
       </div>
     </NavLink>
-  )
+  );
 }
 
 export default NavButton
