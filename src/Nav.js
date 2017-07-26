@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import NavButton from './NavButton.js'
 import './Nav.css';
 
 function Nav () {
   return(
     <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/discover">Discover</NavLink>
-      <NavLink to="/login">Sign In</NavLink>
+      <NavButton display="Home" to="/"/>
+      <NavButton display="Discover" to="/discover"/>
+      <NavButton display="Sign In" to="/login"/>
     </nav>
   )
 }
