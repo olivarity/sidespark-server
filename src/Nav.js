@@ -1,16 +1,15 @@
 import React from 'react';
-import NavButton from './NavButton.js'
+import { Link } from 'react-router-dom';
 import './Nav.css';
 
 function Nav () {
-
-  return(
-    <nav className="Nav">
-      <NavButton display="Home" to="/" />
-      <NavButton display="Discover" to="/discover" />
-      <NavButton className="login" display="Sign In" to="/login" />
-    </nav>
-  );
+  return (
+    <ul className="Nav">
+      <li><Link to="/">Home</Link></li>
+      <li><Link to="/discover">Discover</Link></li>
+      <li className="login"><Link to="/login">Sign In</Link></li>
+    </ul>
+  )
 }
 
 export default Nav
