@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './NavButton.css'
 
 function NavButton (props) {
   return (
-    <NavLink to={props.to}>
-      <div>
-        {props.display}
-      </div>
-    </NavLink>
+    <div className={'NavButton ' + props.className}>
+      <NavLink to={props.to}>
+          {props.display}
+      </NavLink>
+    </div>
   );
 }
+
 
 export default NavButton

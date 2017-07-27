@@ -1,0 +1,19 @@
+.NavButton {
+  float: left;
+}
+
+.NavButton a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.NavButton a:hover {
+    background-color: #111;
+}
+
+.NavButton.login a:hover {
+    background-color: green;
+}

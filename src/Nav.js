@@ -3,11 +3,12 @@ import NavButton from './NavButton.js'
 import './Nav.css';
 
 function Nav () {
+
   return(
-    <nav>
+    <nav className="Nav">
       <NavButton display="Home" to="/" />
       <NavButton display="Discover" to="/discover" />
-      <NavButton display="Sign In" to="/login" />
+      <NavButton className="login" display="Sign In" to="/login" />
     </nav>
   );
 }
