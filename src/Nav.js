@@ -11,7 +11,7 @@ function Nav () {
         <Link to="/create" className="btn btn-link">Create</Link>
       </section>
       <section className="navbar-section">
-        <Link to="/login" className="btn btn-primary">Sign In</Link>
+        <Link to="/login" className="btn btn-sm btn-primary">Sign In</Link>
       </section>
     </header>
   )

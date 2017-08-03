@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="container">
           <Nav />
           <Route exact path="/" render={() => <h1>Home</h1>} />
           <Route path="/discover" render={() => <h1>Discover</h1>}/>
