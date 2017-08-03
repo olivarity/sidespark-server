@@ -30,9 +30,10 @@ class App extends Component {
           <Route path="/discover" render={() => <h1>Discover</h1>} />
           <Route path="/create" render={() => <h1>Create</h1>} />
           <Route path="/login" render={() =>
-              this.state.auth
-              ? <Redirect to="/" />
-              : <Login loginHandler={this.handleLogin} />} />
+            this.state.auth
+            ? <Redirect to="/" />
+            : <Login loginHandler={this.handleLogin} />
+          } />
         </div>
       </Router>
     );
