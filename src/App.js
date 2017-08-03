@@ -14,6 +14,7 @@ class App extends Component {
           <Nav />
           <Route exact path="/" render={() => <h1>Home</h1>} />
           <Route path="/discover" render={() => <h1>Discover</h1>}/>
+          <Route path="/create" render={() => <h1>Create</h1>}/>
           <Route path="/login" render={() => <h1>Sign In</h1>}/>
         </div>
       </Router>
