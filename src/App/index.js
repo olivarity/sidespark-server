@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-import './spectre.min.css'
+import '../spectre.min.css';
 
-import Nav from './Nav.js'
+import Nav from '../Nav';
 
 class App extends Component {
   render() {
