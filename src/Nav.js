@@ -1,14 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Nav.css';
+import './spectre.min.css'
 
 function Nav () {
   return (
-    <ul className="Nav">
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/discover">Discover</Link></li>
-      <li className="login"><Link to="/login">Sign In</Link></li>
-    </ul>
+    <header className="navbar">
+      <section className="navbar-section">
+        <Link to="/discover" className="btn btn-link">Discover</Link>
+        <Link to="/create" className="btn btn-link">Create</Link>
+      </section>
+      <section className="navbar-center">
+        <Link to="/" className="navbar-brand mr-10">Sidespark</Link>
+      </section>
+      <section className="navbar-section">
+        <Link to="/login" className="btn btn-sm btn-primary">Sign In</Link>
+      </section>
+    </header>
   )
 }
 
