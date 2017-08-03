@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Nav ({ auth }) {
   return (
@@ -13,7 +13,7 @@ function Nav ({ auth }) {
       <div className="navbar-section">
         { auth
           ? <Link to="create" className="btn btn-sm btn-primary">+</Link>
-          : <Link to="/login" className="btn btn-sm btn-primary">Sign In</Link>
+          : <NavLink to="/login" className="btn btn-sm btn-primary" activeClassName="hide">Sign In</NavLink>
         }
       </div>
     </nav>
