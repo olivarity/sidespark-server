@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import './spectre.min.css'
 import Nav from './Nav.js'
 
 class App extends Component {
