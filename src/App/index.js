@@ -4,6 +4,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import QueryString from 'query-string';
 
 import '../spectre.min.css';
 
@@ -30,7 +31,7 @@ class App extends Component {
           <Route path="/discover" render={() => <h1>Discover</h1>} />
           <Route path="/create" render={() => <h1>Create</h1>} />
           <Route path="/slack/auth" render={({ location }) =>
-            <p>{location.search}</p>
+            <p>Code: {QueryString.parse(location.search).code}</p>
           } />
         </div>
       </Router>
