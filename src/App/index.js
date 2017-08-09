@@ -5,6 +5,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import QueryString from 'query-string';
+import { OAuthConstants } from '../utils/constants'
 import '../spectre.min.css';
 
 import Nav from '../Nav';
@@ -37,7 +38,14 @@ class App extends Component {
     );
   }
 
-  handleAuth(token) {
+  handleAuth(query) {
+    const keys = {
+      client_id: OAuthConstants.CLIENT_ID,
+      client_secret: OAuthConstants.ClIENT_SECRET,
+      code: query.code
+    };
+    const path = OAuthConstants.PATH_NAME + QueryString.stringify(keys);
+    console.log(path);
     return false;
   }
 
