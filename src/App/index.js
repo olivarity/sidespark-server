@@ -15,7 +15,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      auth: false,
+      auth: null,
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -29,10 +29,8 @@ class App extends Component {
           <Route exact path="/" render={() => <h1>Home</h1>} />
           <Route path="/discover" render={() => <h1>Discover</h1>} />
           <Route path="/create" render={() => <h1>Create</h1>} />
-          <Route path="/login" render={() =>
-            this.state.auth
-            ? <Redirect to="/" />
-            : <Login loginHandler={this.handleLogin} />
+          <Route path="/slack/auth" render={({ location }) =>
+            <p>{location.search}</p>
           } />
         </div>
       </Router>
