@@ -5,11 +5,9 @@ import {
   Redirect
 } from 'react-router-dom';
 import QueryString from 'query-string';
-
 import '../spectre.min.css';
 
 import Nav from '../Nav';
-import Login from '../Login';
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +17,6 @@ class App extends Component {
       auth: null,
     };
 
-    this.handleLogin = this.handleLogin.bind(this);
   }
 
   render() {
@@ -31,15 +28,17 @@ class App extends Component {
           <Route path="/discover" render={() => <h1>Discover</h1>} />
           <Route path="/create" render={() => <h1>Create</h1>} />
           <Route path="/slack/auth" render={({ location }) =>
-            <p>Code: {QueryString.parse(location.search).code}</p>
+            this.state.auth || this.handleAuth(QueryString.parse(location.search))
+              ? <Redirect to="/" />
+              : <p>Error</p>
           } />
         </div>
       </Router>
     );
   }
 
-  handleLogin() {
-    this.setState({auth: true});
+  handleAuth(token) {
+    return false;
   }
 
 }
