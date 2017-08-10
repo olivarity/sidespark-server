@@ -1,9 +1,8 @@
 {
-  "name": "sidespark",
+  "name": "sidespark-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@storybook/storybook-deployer": "^2.0.0",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -14,13 +13,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s ./public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@storybook/react": "^3.1.9",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.1.0"

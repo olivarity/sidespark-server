@@ -1,0 +1,8 @@
+{
+  "name": "sidespark",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/scaasic/sidespark.git",
+  "author": "scaasic <cameron@sidespark.com>",
+  "license": "MIT"
+}
