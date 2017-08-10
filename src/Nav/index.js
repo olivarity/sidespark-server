@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Nav ({ auth }) {
+function Nav () {
   return (
     <nav className="navbar">
       <div className="navbar-section">
@@ -11,10 +11,7 @@ function Nav ({ auth }) {
         <Link to="/" className="navbar-brand mr-10">Sidespark</Link>
       </div>
       <div className="navbar-section">
-        { auth
-          ? <Link to="create" className="btn btn-sm btn-primary">+</Link>
-          : <NavLink to="/login" className="btn btn-sm btn-primary" activeClassName="hide">Sign In</NavLink>
-        }
+        <a href="https://sidespark.slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=***REMOVED***"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
       </div>
     </nav>
   )

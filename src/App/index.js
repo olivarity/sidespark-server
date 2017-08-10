@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect
 } from 'react-router-dom';
-
+import QueryString from 'query-string';
 import '../spectre.min.css';
 
 import Nav from '../Nav';
@@ -15,10 +14,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      auth: false,
+      auth: null,
     };
 
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleAuth = this.handleAuth.bind(this);
   }
 
   render() {
@@ -29,17 +28,21 @@ class App extends Component {
           <Route exact path="/" render={() => <h1>Home</h1>} />
           <Route path="/discover" render={() => <h1>Discover</h1>} />
           <Route path="/create" render={() => <h1>Create</h1>} />
-          <Route path="/login" render={() =>
-              this.state.auth
-              ? <Redirect to="/" />
-              : <Login loginHandler={this.handleLogin} />} />
+          <Route path="/slack/auth" render={({ location }) =>
+            this.state.auth
+            ? <p>You are logged in with token {this.state.auth}</p>
+            : <Login
+              query={QueryString.parse(location.search)}
+              callback={this.handleAuth}
+            />
+          } />
         </div>
       </Router>
     );
   }
 
-  handleLogin() {
-    this.setState({auth: true});
+  handleAuth(token) {
+    this.setState({ auth: token })
   }
 
 }
