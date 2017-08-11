@@ -1,7 +1,8 @@
 {
   "server": {
     "protocol": "http",
-    "host": "localhost:5000"
+    "host": "localhost:5000",
+    "database": "mongodb://localhost:27017"
   },
   "slack": {
     "key": "***REMOVED***",
