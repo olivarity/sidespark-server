@@ -11,7 +11,7 @@ function Nav () {
         <Link to="/" className="navbar-brand mr-10">Sidespark</Link>
       </div>
       <div className="navbar-section">
-        <a href="https://sidespark.slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=***REMOVED***"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+        <a href="/connect/slack"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
       </div>
     </nav>
   )
