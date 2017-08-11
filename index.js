@@ -9,7 +9,7 @@ const Grant = require('grant-express')
 const app = express();
 
 app.use(morgan('combined'));
-app.use(session({secret:'very secret'}));
+app.use(session({secret:'very secret', resave: false, saveUninitialized: false}));
 app.use(grant);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
