@@ -77,14 +77,14 @@ app.get('/connect/slack/callback',
 );
 
 app.get('/logout', function(req, res){
-  console.log('logging out');
-  req.logout();
-  res.redirect('/');
+  req.session.destroy(function (err) {
+    res.redirect('/'); //Inside a callback… bulletproof!
+  });
 });
 
 app.get('/api/user/me', function (req, res) { //Currently logged in user info
   if (req.user) { res.json(req.user) }
-  else { res.json({ auth: false }) }
+  else { res.json(null) }
 });
 
 app.get('*', (req, res) => {

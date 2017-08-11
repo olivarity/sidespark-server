@@ -16,12 +16,23 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch('/api/user/me', { credentials: 'include' })
+      .then(res => res.json())
+      .then(result => this.setState({ auth: result }));
+  }
+
   render() {
+    const auth = this.state.auth;
     return (
       <Router>
         <div className="container">
           <Nav auth={this.state.auth} />
-          <Route exact path="/" render={() => <h1>Home</h1>} />
+          <Route exact path="/" render={() =>
+            auth
+            ? <h1>You are signed in as {auth.name}</h1>
+            : <h1>Welcome! Please sign in.</h1>
+          } />
           <Route path="/discover" render={() => <h1>Discover</h1>} />
           <Route path="/create" render={() => <h1>Create</h1>} />
         </div>

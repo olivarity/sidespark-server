@@ -15,7 +15,7 @@
     "passport-slack": "^0.0.7"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "startdb": "mongod --dbpath ./data/db",
     "fullstart": "cd client && yarn build && cd .. && yarn start"
   }
