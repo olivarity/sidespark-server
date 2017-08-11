@@ -72,14 +72,9 @@ app.use(passport.session());
 app.get('/connect/slack', passport.authenticate('slack'));
 
 app.get('/connect/slack/callback',
-  passport.authenticate('slack', { failureRedirect: '/login' }),
-  (req, res) => res.redirect('/success') // Successful authentication, redirect home.
+  passport.authenticate('slack', { failureRedirect: '/' }),
+  (req, res) => res.redirect('/') // Successful authentication, redirect home.
 );
-
-app.get('/success', (req, res) => {
-  console.log('Name: ' + req.user);
-  res.end();
-});
 
 app.get('/logout', function(req, res){
   console.log('logging out');
@@ -87,7 +82,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.get('/user/me', function (req, res) {
+app.get('/api/user/me', function (req, res) { //Currently logged in user info
   if (req.user) { res.json(req.user) }
   else { res.json({ auth: false }) }
 });
