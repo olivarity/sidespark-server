@@ -35,7 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Declare endpoints
-app.get('/connect/slack', passport.authorize('slack'));
+app.get('/connect/slack', passport.authenticate('slack'));
 
 app.get('/connect/slack/callback',
   passport.authenticate('slack', { failureRedirect: '/login' }),
@@ -45,6 +45,12 @@ app.get('/connect/slack/callback',
 app.get('/success', (req, res) => {
   console.log('Name: ' + req.user.displayName);
   res.end();
+});
+
+app.get('/logout', function(req, res){
+  console.log('logging out');
+  req.logout();
+  res.redirect('/');
 });
 
 app.get('*', (req, res) => {
