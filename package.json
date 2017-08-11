@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "nodemon index.js",
-    "startdb": "mongod --dbpath ./data/db"
+    "startdb": "mongod --dbpath ./data/db",
+    "fullstart": "cd client && yarn build && cd .. && yarn start"
   }
 }
