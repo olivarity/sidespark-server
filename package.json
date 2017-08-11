@@ -8,8 +8,8 @@
   "dependencies": {
     "express": "^4.15.4",
     "express-session": "^1.15.5",
-    "grant-express": "^3.8.0",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "passport-slack": "^0.0.7"
   },
   "scripts": {
     "start": "node index.js"

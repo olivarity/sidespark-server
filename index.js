@@ -1,31 +1,57 @@
+//Import modules
 const express = require('express');
 const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
+const SlackStrategy = require('passport-slack').Strategy;
+const passport = require('passport');
 
-const Grant = require('grant-express')
-  , grant = new Grant(require('./config.json'));
+//Configure middleware:
+const config = require('./config.json');
+passport.use(new SlackStrategy({
+    clientID: config.slack.key,
+    clientSecret: config.slack.secret,
+    scope: ['identity.basic', 'identity.email', 'identity.avatar'],
+    callbackURL: 'http://localhost:5000/connect/slack/callback'
+  }, (accessToken, refreshToken, profile, done) => {
+    done(null, profile);
+  }
+));
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+//Add middleware to app:
 const app = express();
-
-app.use(morgan('combined'));
+app.use(morgan('tiny'));
 app.use(session({secret:'very secret', resave: false, saveUninitialized: false}));
-app.use(grant);
-
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// OAuth callback, check if user exists in store
-app.get('/slack-auth-handler', (req, res) => {
+//Declare endpoints
+app.get('/connect/slack', passport.authorize('slack'));
 
-  req.session.user = req.query.id;
-  res.end(JSON.stringify(req.query, null, 2));
+app.get('/connect/slack/callback',
+  passport.authenticate('slack', { failureRedirect: '/login' }),
+  (req, res) => res.redirect('/success') // Successful authentication, redirect home.
+);
+
+app.get('/success', (req, res) => {
+  console.log('Name: ' + req.user.displayName);
+  res.end();
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
+//Run app
 const port = process.env.port || 5000;
 app.listen(port);
-
 console.log(`Listening on ${port}`);
