@@ -12,6 +12,6 @@
     "passport-slack": "^0.0.7"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   }
 }
