@@ -14,7 +14,10 @@ app.use(grant);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/slack/auth', (req, res) => {
+// OAuth callback, check if user exists in store
+app.get('/slack-auth-handler', (req, res) => {
+
+  req.session.user = req.query.id;
   res.end(JSON.stringify(req.query, null, 2));
 });
 

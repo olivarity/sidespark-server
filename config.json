@@ -6,7 +6,7 @@
   "slack": {
     "key": "***REMOVED***",
     "secret": "***REMOVED***",
-    "callback": "/slack/auth",
+    "callback": "/slack-auth-handler",
     "scope": ["identity.basic", "identity.email", "identity.avatar"]
   }
 }
