@@ -8,10 +8,12 @@
   "dependencies": {
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "mongoose": "^4.11.6",
     "morgan": "^1.8.2",
     "passport-slack": "^0.0.7"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "startdb": "mongod ./data/db"
   }
 }
