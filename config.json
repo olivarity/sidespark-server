@@ -1,0 +1,12 @@
+{
+  "server": {
+    "protocol": "http",
+    "host": "localhost:5000"
+  },
+  "slack": {
+    "key": "***REMOVED***",
+    "secret": "***REMOVED***",
+    "callback": "/slack-auth-handler",
+    "scope": ["identity.basic", "identity.email", "identity.avatar"]
+  }
+}

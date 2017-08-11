@@ -1,28 +1,17 @@
 {
   "name": "sidespark",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/scaasic/sidespark.git",
+  "author": "scaasic <cameron@sidespark.com>",
+  "license": "MIT",
   "dependencies": {
-    "@storybook/storybook-deployer": "^2.0.0",
-    "query-string": "^5.0.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.2",
-    "react-scripts": "1.0.10"
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "morgan": "^1.8.2",
+    "passport-slack": "^0.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s ./public",
-    "deploy-storybook": "storybook-to-ghpages"
-  },
-  "devDependencies": {
-    "@storybook/react": "^3.1.9",
-    "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-react": "^7.1.0"
+    "start": "node index.js"
   }
 }
