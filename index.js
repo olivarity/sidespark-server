@@ -8,7 +8,7 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 
 //Configure middleware:
-const config = require('./config.json');
+const config = require('./utils/config.json');
 
 const UserModel = require('./models/user');
 const db = mongoose.connect(config.server.database, { useMongoClient: true });
@@ -26,7 +26,7 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-require('./auth')(passport, UserModel);
+require('./utils/auth')(passport, UserModel);
 app.use(passport.initialize());
 app.use(passport.session());
 
