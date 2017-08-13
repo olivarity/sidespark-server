@@ -12,8 +12,7 @@ const passport = require('passport');
 const config = require('./config.json');
 
 const UserModel = require('./models/user');
-mongoose.connect(config.server.database);
-const db = mongoose.connection;
+const db = mongoose.connect(config.server.database, { useMongoClient: true });
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 passport.use(new SlackStrategy({
@@ -62,7 +61,7 @@ app.use(session({
   secret:'very secret',
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({ mongooseConnection: db })
 }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(passport.initialize());
