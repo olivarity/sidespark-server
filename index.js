@@ -43,10 +43,7 @@ app.get('/logout', function(req, res){
   });
 });
 
-app.get('/api/user/me', function (req, res) { //Currently logged in user info
-  if (req.user) { res.json(req.user) }
-  else { res.json(null) }
-});
+app.use('/api/users', require('./routes/user'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'));
