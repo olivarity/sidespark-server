@@ -6,9 +6,9 @@ const router = express.Router();
 
 // GET currently logged in User
 router.get('/me', function (req, res) {
-  const id = req.user.id;
-  if(id) {
-    UserModel.findById(id, function (err, user) {
+  const user  = req.user;
+  if(user) {
+    UserModel.findById(user.id, function (err, user) {
       if(err) res.sendStatus(500);
       res.json(user);
     });
