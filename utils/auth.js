@@ -7,7 +7,7 @@ module.exports = function(passport, UserModel) {
       clientID: config.slack.key,
       clientSecret: config.slack.secret,
       scope: config.slack.scope,
-      callbackURL: config.server.protocol + config.server.host + config.slack.callback
+      callbackURL: config.server.protocol + '://' + config.server.host + config.slack.callback
     }, (accessToken, refreshToken, profile, done) => {
       const id = profile.id
       const update = {
