@@ -43,7 +43,7 @@ app.get('/logout', function(req, res){
   });
 });
 
-app.use('/api/users', require('./routes/user'));
+app.use('/api', require('./routes/api'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'));

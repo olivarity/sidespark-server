@@ -1,8 +1,5 @@
-const express = require('express');
-const db = require('../utils/db');
-const UserModel = require('../models/user');
-
-const router = express.Router();
+const router = require('express').Router();
+const UserModel = require('../../models/user');
 
 // GET currently logged in User
 router.get('/me', function (req, res) {
