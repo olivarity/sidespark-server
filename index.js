@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
-const mongoose = require('mongoose');
+const db = require('./utils/db');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 
@@ -11,13 +11,12 @@ const passport = require('passport');
 const config = require('./utils/config.json');
 
 const UserModel = require('./models/user');
-const db = mongoose.connect(config.server.database, { useMongoClient: true });
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 
 //Add middleware to app:
 const app = express();
-app.use(morgan('tiny'));
 
+app.use(morgan('tiny'));
 app.use(session({
   secret:'very secret',
   resave: false,

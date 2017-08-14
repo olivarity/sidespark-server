@@ -1,9 +1,10 @@
-var mongoose = require('mongoose');
-var timestamps = require('mongoose-timestamp');
-var Schema = mongoose.Schema;
+const db = require('../utils/db');
+const Schema = require('mongoose').Schema;
+const timestamps = require('mongoose-timestamp');
+
 
 //Define schema
-var ProjectSchema = new Schema({
+const ProjectSchema = new Schema({
   createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   contributors: {
     type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
@@ -33,4 +34,4 @@ ProjectSchema.virtual('upvotes').get(function () {
 
 ProjectSchema.plugin(timestamps);
 
-module.exports = mongoose.model('Project', ProjectSchema);
+module.exports = db.model('Project', ProjectSchema);
