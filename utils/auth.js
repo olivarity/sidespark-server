@@ -1,7 +1,8 @@
 const config = require('./config.json');
 const SlackStrategy = require('passport-slack').Strategy;
+const User = require('../models/user');
 
-module.exports = function(passport, UserModel) {
+module.exports = function(passport) {
 
   passport.use(new SlackStrategy({
       clientID: config.slack.key,
@@ -24,7 +25,7 @@ module.exports = function(passport, UserModel) {
           image_512: profile.user.image_512
         }
       }
-      UserModel.findByIdAndUpdate(id, update, {upsert: true}, function (err, doc) {
+      User.findByIdAndUpdate(id, update, {upsert: true}, function (err, doc) {
         done(null, doc);
       });
     }
@@ -36,7 +37,7 @@ module.exports = function(passport, UserModel) {
   });
 
   passport.deserializeUser(function(id, done) {
-    UserModel.findById(id, function (err, doc) {
+    User.findById(id, function (err, doc) {
         done(null, doc);
     })
   });

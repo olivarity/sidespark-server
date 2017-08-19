@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const UserModel = require('../../models/user');
+const User = require('../../models/user');
 
 // GET currently logged in User
 router.get('/me', function (req, res) {
   const user  = req.user;
   if(user) {
-    UserModel.findById(user.id, function (err, user) {
+    User.findById(user.id, function (err, user) {
       if(err) res.sendStatus(500);
       res.json(user);
     });
@@ -16,7 +16,7 @@ router.get('/me', function (req, res) {
 
 // GET User by ID (public)
 router.get('/:id', function (req, res) {
-  UserModel.findById(req.params.id, 'name avatar', function(err, user) {
+  User.findById(req.params.id, 'name avatar', function(err, user) {
     if(err) res.sendStatus(500);
     res.json(user);
   });

@@ -10,9 +10,6 @@ const passport = require('passport');
 //Configure middleware:
 const config = require('./utils/config.json');
 
-const UserModel = require('./models/user');
-
-
 //Add middleware to app:
 const app = express();
 
@@ -25,7 +22,7 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-require('./utils/auth')(passport, UserModel);
+require('./utils/auth')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 

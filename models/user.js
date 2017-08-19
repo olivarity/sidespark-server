@@ -22,7 +22,6 @@ UserSchema.virtual('url').get(function () {
   return '/api/user/' + this._id;
 });
 
-
 UserSchema.plugin(timestamps);
 
 module.exports = db.model('User', UserSchema);
