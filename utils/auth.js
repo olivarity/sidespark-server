@@ -33,7 +33,7 @@ module.exports = function(passport) {
 
   passport.serializeUser(function(user, done) {
     //Save user's id to session store
-    done(null, user.id);
+    done(null, user._id);
   });
 
   passport.deserializeUser(function(id, done) {

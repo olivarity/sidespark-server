@@ -5,8 +5,8 @@ const User = require('../../models/user');
 router.get('/me', function (req, res) {
   const user  = req.user;
   if(user) {
-    User.findById(user.id, function (err, user) {
-      if(err) res.sendStatus(500);
+    User.findById(user._id, function (err, user) {
+      if(err) return res.sendStatus(500);
       res.json(user);
     });
   } else {
@@ -17,7 +17,7 @@ router.get('/me', function (req, res) {
 // GET User by ID (public)
 router.get('/:id', function (req, res) {
   User.findById(req.params.id, 'name avatar', function(err, user) {
-    if(err) res.sendStatus(500);
+    if(err) return res.sendStatus(500);
     res.json(user);
   });
 });
