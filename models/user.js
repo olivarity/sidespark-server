@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-var timestamps = require('mongoose-timestamp');
-var Schema = mongoose.Schema;
+const db = require('../utils/db');
+const Schema = require('mongoose').Schema;
+const timestamps = require('mongoose-timestamp');
 
 //Define schema
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   _id: { type: String, required: true },
   authToken: String,
   email: { type: String, lowercase: true, match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ },
@@ -22,7 +22,6 @@ UserSchema.virtual('url').get(function () {
   return '/api/user/' + this._id;
 });
 
-
 UserSchema.plugin(timestamps);
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = db.model('User', UserSchema);

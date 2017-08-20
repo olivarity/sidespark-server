@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/user/me', { credentials: 'include' })
+    fetch('/api/users/me', { credentials: 'include' })
       .then(res => res.json())
       .then(result => this.setState({ auth: result }));
   }
