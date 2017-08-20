@@ -2,21 +2,20 @@ const db = require('../utils/db');
 const Schema = require('mongoose').Schema;
 const timestamps = require('mongoose-timestamp');
 
-
 //Define schema
 const ProjectSchema = new Schema({
-  createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  creator: { type: String, ref: 'User', required: true },
   contributors: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    type: [{ type: String, ref: 'User' }],
     validate: [projectContributorArrayLimit, '{PATH} exceeds the array size limit of 8']
   },
-  upvoters: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  upvoters: [{ type: String, ref: 'User' }],
 
-  title: { type: String, required: true }
-  headline: { type: String, maxlength: 50 }
+  title: { type: String, required: true },
+  headline: { type: String, maxlength: 50 },
   description: String,
-  image: String,
-  website: String
+  imageURL: String,
+  releaseURL: String
 });
 
 //Validators
