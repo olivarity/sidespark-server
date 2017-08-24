@@ -7,6 +7,7 @@ import {
 import '../spectre.min.css';
 
 import Nav from '../components/Nav';
+import CreatePage from '../pages/CreatePage';
 
 
 class App extends Component {
@@ -37,7 +38,7 @@ class App extends Component {
           } />
           <Route path="/create" render={() =>
             auth
-            ? <h1>Create Placeholder</h1>
+            ? <CreatePage />
             : <Redirect to="/" />
           } />
         </div>

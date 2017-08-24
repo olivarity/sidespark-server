@@ -13,6 +13,7 @@ const ProjectSchema = new Schema({
 
   title: { type: String, required: true },
   headline: { type: String, maxlength: 50 },
+  category: String,
   description: String,
   imageURL: String,
   releaseURL: String
