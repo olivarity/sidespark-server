@@ -7,6 +7,7 @@ module.exports = function(passport) {
   passport.use(new SlackStrategy({
       clientID: config.slack.key,
       clientSecret: config.slack.secret,
+      team: config.slack.team,
       scope: config.slack.scope,
       callbackURL: config.server.protocol + '://' + config.server.host + config.slack.callback
     }, (accessToken, refreshToken, profile, done) => {
