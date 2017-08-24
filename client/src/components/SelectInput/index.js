@@ -1,10 +1,10 @@
 import React from 'react';
 
-function SelectInput ({ name, label, value, onChange, children}) {
+function SelectInput ({label, children, ...other }) {
   return(
     <fieldset className="form-group">
       <label className="form-label">{label}</label>
-      <select name={name} value={value} onChange={onChange} className="form-select">
+      <select className="form-select" {...other}>
         {children}
       </select>
     </fieldset>
