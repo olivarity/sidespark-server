@@ -21,9 +21,9 @@ router.route('/')
     if (req.user) {
       const project = new Project(req.body);
       project.creator = req.user._id;
-      project.save(function (err) {
+      project.save(function (err, doc) {
         if(err) return res.sendStatus(500);
-        res.send("Success");
+        res.send(doc.id);
       });
     }
   else { res.sendStatus(403) };

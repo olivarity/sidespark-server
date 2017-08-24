@@ -7,8 +7,9 @@ class CreatePage extends Component {
     super(props);
 
     this.state = {
-      status: null,
-      response: {
+      loading: false,
+      result: null,
+      request: {
         title: '',
         headline: '',
         category: '',
@@ -29,21 +30,21 @@ class CreatePage extends Component {
           <TextInput
             name="title"
             label="Title"
-            value={this.state.response.title}
+            value={this.state.request.title}
             onChange={this.handleChange}
             required
           />
           <TextInput
             name="headline"
             label="Headline"
-            value={this.state.response.headline}
+            value={this.state.request.headline}
             onChange={this.handleChange}
             required
           />
           <SelectInput
             name="category"
             label="Category (optional)"
-            value={this.state.response.category}
+            value={this.state.request.category}
             onChange={this.handleChange}
           >
             <option value="">None</option>
@@ -55,7 +56,7 @@ class CreatePage extends Component {
             <label className="form-label">Description</label>
             <textarea
               name="description"
-              value={this.state.response.description}
+              value={this.state.request.description}
               onChange={this.handleChange}
               className="form-input"
               rows="3"
@@ -65,11 +66,11 @@ class CreatePage extends Component {
           <TextInput
             name="releaseURL"
             label="External URL (optional)"
-            value={this.state.response.releaseURL}
+            value={this.state.request.releaseURL}
             onChange={this.handleChange}
             type="url"
           />
-        <button className={"btn btn-lg btn-primary centered " + (this.state.status ? "loading" : "")}  type="submit">Submit</button>
+        <button className={"btn btn-lg btn-primary centered " + (this.state.loading ? "loading" : "")}  type="submit">Submit</button>
         </form>
       </div>
     );
@@ -77,24 +78,24 @@ class CreatePage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('click');
-    this.setState({ status: 'loading' });
-    // fetch('/api/projects', {
-    //   credentials: 'include',
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(this.state.response)
-    // }).then(())
+    this.setState({ loading: true });
+    fetch('/api/projects', {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state.request)
+    }).then(res => res.text())
+      .then(body => this.setState({ result: body, loading: false }));
   }
 
   handleChange(event) {
     const value = event.target.value;
     const name = event.target.name;
     this.setState((prevState) => ({
-      response: { ...prevState.response, [name]: value }
+      request: { ...prevState.request, [name]: value }
     }));
   }
 }
