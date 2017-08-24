@@ -8,6 +8,7 @@ import '../spectre.min.css';
 
 import Nav from '../components/Nav';
 import CreatePage from '../pages/CreatePage';
+import ProjectPage from '../pages/ProjectPage';
 
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
             ? <CreatePage />
             : <Redirect to="/" />
           } />
+        <Route path="/projects/:id" component={ProjectPage} />
         </div>
       </Router>
     );
