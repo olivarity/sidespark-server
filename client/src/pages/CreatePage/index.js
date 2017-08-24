@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextInput from '../../components/TextInput';
 import SelectInput from '../../components/SelectInput';
