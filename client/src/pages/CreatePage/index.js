@@ -1,37 +1,80 @@
-import React from 'react';
+import React, {Component} from 'react';
+import TextInput from '../../components/TextInput';
+import SelectInput from '../../components/SelectInput';
 
-function CreatePage () {
-  return (
-    <form className="col-8 centered">
-      <h2>New Project</h2>
-      <fieldset className="form-group">
-        <label className="form-label " for="input-example-1">Project Title</label>
-        <input className="form-input" type="text" id="input-example-1" placeholder="Sidespark" />
-      </fieldset>
-      <fieldset className="form-group">
-        <label className="form-label" for="input-example-1">Headline</label>
-        <input className="form-input" type="text" id="input-example-1" placeholder="It does a thing" maxLength="50"/>
-      </fieldset>
-      <fieldset className="form-group">
-        <label className="form-label" for="input-example-1">Category (optional)</label>
-        <select className="form-select">
-         <option selected value="">None</option>
-         <option>Media</option>
-         <option>Social Impact</option>
-         <option>Software and Technology</option>
-        </select>
-      </fieldset>
-      <fieldset className="form-group">
-        <label className="form-label" for="input-example-1">Description</label>
-        <textarea className="form-input" id="input-example-1"  rows="3" />
-      </fieldset>
-      <fieldset className="form-group">
-        <label className="form-label" for="input-example-1">External URL (optional)</label>
-        <input className="form-input" type="text" id="input-example-1" placeholder="Sidespark" />
-      </fieldset>
-      <button className="btn btn-primary float-right">Submit</button>
-    </form>
-  )
+class CreatePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      title: '',
+      headline: '',
+      category: '',
+      description: '',
+      releaseURL: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  render() {
+    return(
+      <div className="container grid-sm">
+        <form>
+          <h2>New Project</h2>
+          <TextInput
+            name="title"
+            label="Title"
+            value={this.state.title}
+            onChange={this.handleChange}
+          />
+          <TextInput
+            name="headline"
+            label="Headline"
+            value={this.state.headline}
+            onChange={this.handleChange}
+          />
+          <SelectInput
+            name="category"
+            label="Category (optional)"
+            value={this.state.category}
+            onChange={this.handleChange}
+          >
+            <option value="">None</option>
+            <option>Media</option>
+            <option>Social Impact</option>
+            <option>Software and Technology</option>
+          </SelectInput>
+          <fieldset className="form-group">
+            <label className="form-label">Description</label>
+            <textarea
+              name="description"
+              value={this.state.description}
+              onChange={this.handleChange}
+              className="form-input"
+              rows="3"/>
+          </fieldset>
+          <TextInput
+            name="releaseURL"
+            label="External URL (optional)"
+            value={this.state.releaseURL}
+            onChange={this.handleChange}
+          />
+        <button className="btn btn-lg btn-primary centered" onClick={this.handleSubmitClick}>Submit</button>
+        </form>
+      </div>
+    );
+  }
+
+  handleSubmitClick(e) {
+    console.log(e)
+  }
+
+  handleChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
+    console.log(e);
+    this.setState({ [name]: value });
+  }
 }
 
 export default CreatePage;
