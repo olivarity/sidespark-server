@@ -7,11 +7,14 @@ class CreatePage extends Component {
     super(props);
 
     this.state = {
-      title: '',
-      headline: '',
-      category: '',
-      description: '',
-      releaseURL: ''
+      status: null,
+      response: {
+        title: '',
+        headline: '',
+        category: '',
+        description: '',
+        releaseURL: ''
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,21 +29,21 @@ class CreatePage extends Component {
           <TextInput
             name="title"
             label="Title"
-            value={this.state.title}
+            value={this.state.response.title}
             onChange={this.handleChange}
             required
           />
           <TextInput
             name="headline"
             label="Headline"
-            value={this.state.headline}
+            value={this.state.response.headline}
             onChange={this.handleChange}
             required
           />
           <SelectInput
             name="category"
             label="Category (optional)"
-            value={this.state.category}
+            value={this.state.response.category}
             onChange={this.handleChange}
           >
             <option value="">None</option>
@@ -52,7 +55,7 @@ class CreatePage extends Component {
             <label className="form-label">Description</label>
             <textarea
               name="description"
-              value={this.state.description}
+              value={this.state.response.description}
               onChange={this.handleChange}
               className="form-input"
               rows="3"
@@ -62,25 +65,37 @@ class CreatePage extends Component {
           <TextInput
             name="releaseURL"
             label="External URL (optional)"
-            value={this.state.releaseURL}
+            value={this.state.response.releaseURL}
             onChange={this.handleChange}
             type="url"
           />
-        <button className="btn btn-lg btn-primary centered" type="submit">Submit</button>
+        <button className={"btn btn-lg btn-primary centered " + (this.state.status ? "loading" : "")}  type="submit">Submit</button>
         </form>
       </div>
     );
   }
 
   handleSubmit(event) {
-    console.log('POST!');
     event.preventDefault();
+    console.log('click');
+    this.setState({ status: 'loading' });
+    // fetch('/api/projects', {
+    //   credentials: 'include',
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(this.state.response)
+    // }).then(())
   }
 
   handleChange(event) {
     const value = event.target.value;
     const name = event.target.name;
-    this.setState({ [name]: value });
+    this.setState((prevState) => ({
+      response: { ...prevState.response, [name]: value }
+    }));
   }
 }
 
