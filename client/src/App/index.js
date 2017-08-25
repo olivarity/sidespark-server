@@ -9,7 +9,7 @@ import '../spectre.min.css';
 import Nav from '../components/Nav';
 import CreatePage from '../pages/CreatePage';
 import ProjectPage from '../pages/ProjectPage';
-
+import HomePage from '../pages/HomePage';
 
 class App extends Component {
   constructor(props) {
@@ -33,18 +33,14 @@ class App extends Component {
         <div className="container p-0 grid-lg">
           <Nav auth={this.state.auth} />
           <div className="container grid-md">
-            <Route exact path="/" render={() =>
-              auth
-              ? <h1>You are signed in as {auth.name}</h1>
-              : <h1>Welcome! Please sign in.</h1>
-            } />
+            <Route exact path="/" component={HomePage} />
             <Route path="/create" render={() =>
               auth
               ? <CreatePage />
               : <Redirect to="/" />
             } />
-          <Route path="/projects/:id" render={({ match }) =>
-              <ProjectPage id={match.params.id} auth={auth} />
+            <Route path="/projects/:id" render={({ match }) =>
+                <ProjectPage id={match.params.id} auth={auth} />
             } />
           </div>
         </div>
