@@ -7,6 +7,7 @@
   "slack": {
     "key": "***REMOVED***",
     "secret": "***REMOVED***",
+    "team": "T65TJGA5D",
     "callback": "/connect/slack/callback",
     "scope": ["identity.basic", "identity.email", "identity.avatar"]
   }
