@@ -30,9 +30,9 @@ class App extends Component {
     const auth = this.state.auth;
     return (
       <Router>
-        <div>
+        <div className="container p-0 grid-lg">
           <Nav auth={this.state.auth} />
-          <div className="container">
+          <div className="container grid-md">
             <Route exact path="/" render={() =>
               auth
               ? <h1>You are signed in as {auth.name}</h1>

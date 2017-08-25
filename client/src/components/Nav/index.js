@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 function Nav ({ auth }) {
   return (
-    <nav className="navbar">
+    <nav className="navbar container">
       <div className="navbar-section">
-        <Link to="/" className="navbar-brand pl-2">Sidespark</Link>
+        <Link to="/" className="navbar-brand">Sidespark</Link>
       </div>
       <div className="navbar-section">
         { auth
