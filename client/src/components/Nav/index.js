@@ -5,15 +5,17 @@ function Nav ({ auth }) {
   return (
     <nav className="navbar">
       <div className="navbar-section">
-        <Link to="/" className="navbar-brand">Sidespark</Link>
+        <Link to="/" className="navbar-brand pl-2">Sidespark</Link>
       </div>
       <div className="navbar-section">
         { auth
           ? <div>
               <Link to="/create" className="btn btn-link">Create New</Link>
-              <a href="/connect/logout" className="btn btn-link">Sign Out</a>
+              <a href="/connect/logout" className="btn btn-link">
+                <span className="text-error">Sign Out</span>
+              </a>
             </div>
-          : <a href="/connect/slack" className="btn btn-primary btn-sm">Sign in with Slack</a>
+          : <a href="/connect/slack" className="btn btn-link">Sign in with Slack</a>
         }
       </div>
     </nav>

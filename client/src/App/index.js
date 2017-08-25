@@ -30,19 +30,21 @@ class App extends Component {
     const auth = this.state.auth;
     return (
       <Router>
-        <div className="container">
+        <div>
           <Nav auth={this.state.auth} />
-          <Route exact path="/" render={() =>
-            auth
-            ? <h1>You are signed in as {auth.name}</h1>
-            : <h1>Welcome! Please sign in.</h1>
-          } />
-          <Route path="/create" render={() =>
-            auth
-            ? <CreatePage />
-            : <Redirect to="/" />
-          } />
-        <Route path="/projects/:id" component={ProjectPage} />
+          <div className="container">
+            <Route exact path="/" render={() =>
+              auth
+              ? <h1>You are signed in as {auth.name}</h1>
+              : <h1>Welcome! Please sign in.</h1>
+            } />
+            <Route path="/create" render={() =>
+              auth
+              ? <CreatePage />
+              : <Redirect to="/" />
+            } />
+            <Route path="/projects/:id" component={ProjectPage} />
+          </div>
         </div>
       </Router>
     );
