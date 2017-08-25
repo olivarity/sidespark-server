@@ -43,7 +43,9 @@ class App extends Component {
               ? <CreatePage />
               : <Redirect to="/" />
             } />
-            <Route path="/projects/:id" component={ProjectPage} />
+          <Route path="/projects/:id" render={({ match }) =>
+              <ProjectPage id={match.params.id} auth={auth} />
+            } />
           </div>
         </div>
       </Router>

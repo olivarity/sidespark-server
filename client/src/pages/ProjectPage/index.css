@@ -1,0 +1,15 @@
+.project-page {
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.project-page h1 {
+  margin-bottom: 0px;
+}
+
+.project-page h2 {
+  font-weight: lighter;
+  font-size: 2em;
+}
