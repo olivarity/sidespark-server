@@ -9,8 +9,10 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "yarn watch | react-scripts start",
+    "build": "yarn buildcss && react-scripts build",
+    "buildcss": "cd spectre && yarn gulp build",
+    "watch": "cd spectre && yarn gulp watch",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
