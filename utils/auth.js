@@ -27,17 +27,22 @@ module.exports = function(passport) {
         }
       }
       User.findByIdAndUpdate(id, update, {upsert: true}, function (err, doc) {
-        done(null, doc);
+        console.log(doc);
+        if(doc) return done(null, doc);
+        User.findById(id, function (err, user) {
+          done(null, user);
+        });
       });
     }
   ));
 
   passport.serializeUser(function(user, done) {
-    //Save user's id to session store
+    console.log('Serializing');
     done(null, user._id);
   });
 
   passport.deserializeUser(function(id, done) {
+    console.log("Deserializing");
     User.findById(id, function (err, doc) {
         done(null, doc);
     })
