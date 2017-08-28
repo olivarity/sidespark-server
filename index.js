@@ -26,9 +26,6 @@ app.use(passport.session());
 //Declare endpoints
 app.use('/connect', require('./routes/connect')(passport));
 app.use('/api', require('./routes/api'));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
-});
 
 //Run app
 const port = process.env.port || 5000;
