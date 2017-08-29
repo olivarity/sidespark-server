@@ -4,6 +4,9 @@
 # data
 /data
 
+#config
+/utils/config.json
+
 # misc
 .DS_Store
 .env.local

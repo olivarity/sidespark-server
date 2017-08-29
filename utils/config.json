@@ -1,13 +1,13 @@
 {
   "server": {
-    "protocol": "http",
-    "host": "localhost:5000",
-    "database": "mongodb://localhost:27017"
+    "protocol": "",
+    "host": "",
+    "database": ""
   },
   "slack": {
-    "key": "***REMOVED***",
-    "secret": "***REMOVED***",
-    "team": "T65TJGA5D",
+    "key": "",
+    "secret": "",
+    "team": "",
     "callback": "/connect/slack/callback",
     "scope": ["identity.basic", "identity.email", "identity.avatar"]
   }

@@ -26,8 +26,11 @@ app.use(passport.session());
 //Declare endpoints
 app.use('/connect', require('./routes/connect')(passport));
 app.use('/api', require('./routes/api'));
+app.get('*', (req, res) => {
+  res.sendStatus(404);
+});
 
 //Run app
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 app.listen(port);
 console.log(`Listening on ${port}`);
