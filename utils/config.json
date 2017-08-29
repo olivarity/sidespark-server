@@ -2,7 +2,7 @@
   "server": {
     "protocol": "http",
     "host": "localhost:5000",
-    "database": "mongodb://localhost:27017"
+    "database": "mongodb://db:27017/sidespark"
   },
   "slack": {
     "key": "***REMOVED***",
