@@ -1,0 +1,14 @@
+{
+  "server": {
+    "protocol": "",
+    "host": "",
+    "database": ""
+  },
+  "slack": {
+    "key": "",
+    "secret": "",
+    "team": "",
+    "callback": "/connect/slack/callback",
+    "scope": ["identity.basic", "identity.email", "identity.avatar"]
+  }
+}
