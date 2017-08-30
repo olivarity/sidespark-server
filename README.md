@@ -4,9 +4,9 @@ This is the server code for Sidespark. For client code, see scaasic/sidespark-cl
 ## Getting Started
 Install dependencies locally using `yarn install`.
 
-`/utils/config.json` must be configured prior to runtime. Required are a Slack API key and Team ID, a URI to a Mongo database, and a valid protocol and public hostname for the Slack auth callback.
+Necessary configuration files can be found in `/config`. A template is provided as `default.json`. Multiple configuration files can be provided; usage is determined by `$NODE_ENV` (ex: setting `NODE_ENV=dev` will load from `/config/dev.json`).
 
-To start the local dev server, run `yarn start`. Defaults to port 5000 unless specified in `$PORT`.
+To start the server, run `yarn start`. Defaults to port 5000 unless specified in `$PORT`.
 
 ## Production
-Production builds are handled by Docker. Running `docker-compose up` will start two containers on a virtual network, one running this app on Node, and another using the stock `mongo` image. Connect the two with the database URI `mongodb://db:27017/<DB_NAME>`.
+Production builds can be found as Docker images in the registry. New builds can be created using the included Dockerfile, which will set the environment to 'production' for configuration purposes.
