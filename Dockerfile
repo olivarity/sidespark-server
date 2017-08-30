@@ -10,7 +10,9 @@ RUN yarn install
 # Copy source files
 COPY . .
 
-ENV PORT 5000
+ENV PORT=5000
 EXPOSE $PORT
+
+ENV NODE_ENV=production
 
 CMD [ "yarn", "start" ]
