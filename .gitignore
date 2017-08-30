@@ -5,7 +5,8 @@
 /data
 
 #config
-/utils/config.json
+/config/*
+!/config/default.json
 
 # misc
 .DS_Store

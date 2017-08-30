@@ -1,15 +1,19 @@
-const config = require('./config.json');
+const config = require('config');
 const SlackStrategy = require('./strategy');
 const User = require('../models/user');
 
 module.exports = function(passport) {
 
   passport.use(new SlackStrategy({
-      clientID: config.slack.key,
-      clientSecret: config.slack.secret,
+      clientID: config.get('slack.key'),
+      clientSecret: config.get('slack.secret'),
 //    team: config.slack.team,
-      scope: config.slack.scope,
-      callbackURL: config.server.protocol + '://' + config.server.host + config.slack.callback
+      scope: config.get('slack.scope'),
+      callbackURL:
+        config.get('server.protocol') +
+        '://' +
+        config.get('server.host') +
+        config.get('slack.callback'),
     }, (accessToken, refreshToken, profile, done) => {
       const id = profile.id
       const update = {
