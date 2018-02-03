@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "repository": "https://github.com/scaasic/sidespark.git",
-  "author": "scaasic <cameron@sidespark.com>",
-  "license": "UNLICENSED",
+  "author": "scaasic <olivia@scaasic.com>",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.2",
     "config": "^1.26.2",
